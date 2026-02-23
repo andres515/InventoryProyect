@@ -1,0 +1,119 @@
+/* src/pages/Login.css */
+
+.login-page {
+  display: flex;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-left {
+  flex: 1;
+  background: #1e293b;
+  color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-left h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.features .feature {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.features .icon {
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+}
+
+footer .links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.login-right {
+  flex: 1;
+  background: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h5 {
+  color: #6366f1;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.login-right h2 {
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-group .icon-input {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.input-group .eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #6366f1;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background: #4f46e5;
+}
+
+.links-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6366f1;
+  cursor: pointer;
+}
+
+.terms {
+  font-size: 0.75rem;
+  margin-top: 2rem;
+  color: #9ca3af;
+}
