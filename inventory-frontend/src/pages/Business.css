@@ -1,0 +1,58 @@
+.business-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.business-card {
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.business-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.business-info h2 {
+  margin-bottom: 5px;
+}
+
+.business-email,
+.business-phone {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.logo-section {
+  margin-top: 25px;
+}
+
+.section-title {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.business-logo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.upload-section {
+  margin-top: 25px;
+}
+
+.loading-text {
+  color: #6b7280;
+}

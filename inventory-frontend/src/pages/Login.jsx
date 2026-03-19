@@ -5,25 +5,74 @@ import { FaUser, FaLock, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
 function Login() {
-  const { user, token, login } = useAuth();
+
+  const { token, login } = useAuth();
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({
+    username: "",
+    password: ""
+  });
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  // 🔥 Si ya está logueado, redirigir
-  useEffect(() => {
-    if (user && token) {
-      navigate("/dashboard", { replace: true });
-    }
-  }, [user, token, navigate]);
+  // 🔥 NUEVO — estado del carrusel
+  const [slide, setSlide] = useState(0);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // 🔥 NUEVO — auto cambio de slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlide(prev => (prev + 1) % 3);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // ===============================
+  // DECODIFICAR JWT
+  // ===============================
+  const parseJwt = (token) => {
+    try {
+      return JSON.parse(atob(token.split(".")[1]));
+    } catch {
+      return null;
+    }
   };
 
+  // ===============================
+  // REDIRECCIÓN AUTOMÁTICA
+  // ===============================
+  useEffect(() => {
+    if (token) {
+
+      const decoded = parseJwt(token);
+      const role = decoded?.role;
+
+      if (role === "SUPER_ADMIN") {
+        navigate("/business", { replace: true });
+      } else if (role === "ADMIN") {
+        navigate("/dashboard", { replace: true });
+      } else {
+        navigate("/products", { replace: true });
+      }
+    }
+  }, [token, navigate]);
+
+  // ===============================
+  // INPUTS
+  // ===============================
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // ===============================
+  // LOGIN
+  // ===============================
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -33,9 +82,9 @@ function Login() {
       const res = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form)
       });
 
       if (!res.ok) {
@@ -44,12 +93,20 @@ function Login() {
         return;
       }
 
-      const data = await res.json(); // { token: "..." }
+      const data = await res.json();
 
-      // 🔥 SOLO guardamos el token
       login(data.token);
 
-      navigate("/dashboard", { replace: true });
+      const decoded = parseJwt(data.token);
+      const role = decoded?.role;
+
+      if (role === "SUPER_ADMIN") {
+        navigate("/business", { replace: true });
+      } else if (role === "ADMIN") {
+        navigate("/dashboard", { replace: true });
+      } else {
+        navigate("/products", { replace: true });
+      }
 
     } catch (err) {
       console.error(err);
@@ -62,104 +119,116 @@ function Login() {
   return (
     <div className="login-page">
 
-      {/* Lado izquierdo */}
-    <div className="login-left">
-      <div className="login-left-top">
-       <div className="brand">
-        <div className="brand-icon">📦</div>
-      
+      {/* ===== LEFT (CARRUSEL) ===== */}
+      <div className="login-left">
+
+        {/* Brand fijo */}
+        <div className="brand">
+          
+          <span>Sistema de inventarios</span>
+        </div>
+
+        {/* Carrusel */}
+        <div className="carousel-left">
+
+          <div className={`slide ${slide === 0 ? "active" : ""}`}>
+            <h1>
+              Gestiona tu inventario
+              <br />
+              con precisión y eficiencia
+            </h1>
+            <p>Control total de stock en tiempo real.</p>
+          </div>
+
+          <div className={`slide ${slide === 1 ? "active" : ""}`}>
+            <h1>
+              Reportes inteligentes
+              <br />
+              para decisiones estratégicas
+            </h1>
+            <p>Analiza métricas clave fácilmente.</p>
+          </div>
+
+          <div className={`slide ${slide === 2 ? "active" : ""}`}>
+            <h1>
+              Administra múltiples
+              <br />
+              almacenes sin esfuerzo
+            </h1>
+            <p>Gestiona todo desde una sola plataforma.</p>
+          </div>
+
+        </div>
+
+        {/* Indicadores */}
+        <div className="carousel-dots">
+          {[0,1,2].map((i) => (
+            <span
+              key={i}
+              className={slide === i ? "dot active" : "dot"}
+              onClick={() => setSlide(i)}
+            />
+          ))}
+        </div>
+
+        <div className="login-left-footer">
+          © 2026 Inventory System Inc.
+        </div>
+
+      </div>
+
+      {/* ===== RIGHT ===== */}
+      <div className="login-right">
+
+  <div className="login-card">
+
+    <div className="login-header">
+      <h5>BIENVENIDO DE VUELTA</h5>
+      <h2>Inicio de Sesión</h2>
+      <p>Ingresa tus credenciales para acceder.</p>
     </div>
-      <span>Inventory System</span>
-    
 
-    <h1>
-      Gestiona tu inventario
-      <br />
-      con precisión y
-      <br />
-      eficiencia
-    </h1>
+    {error && <p className="error-text">{error}</p>}
 
-    <div className="features">
-      <div className="feature">
-        <div className="feature-icon">📊</div>
-        <div>
-          <h4>Control total de inventario</h4>
-          <p>Monitorea stock en tiempo real con precisión milimétrica.</p>
-        </div>
+    <form onSubmit={handleSubmit}>
+
+      <div className="input-group">
+        <FaUser className="icon-input" />
+        <input
+          name="username"
+          placeholder="Usuario"
+          value={form.username}
+          onChange={handleChange}
+          required
+        />
       </div>
 
-      <div className="feature">
-        <div className="feature-icon">📈</div>
-        <div>
-          <h4>Reportes detallados</h4>
-          <p>Analiza tendencias y métricas clave para tomar mejores decisiones.</p>
-        </div>
+      <div className="input-group">
+        <FaLock className="icon-input" />
+        <input
+          name="password"
+          type={showPassword ? "text" : "password"}
+          placeholder="Contraseña"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
+        <FaEyeSlash
+          className="eye-icon"
+          onClick={() => setShowPassword(!showPassword)}
+        />
       </div>
 
-      <div className="feature">
-        <div className="feature-icon">🏬</div>
-        <div>
-          <h4>Múltiples almacenes</h4>
-          <p>Gestiona todas tus ubicaciones desde una sola plataforma centralizada.</p>
-        </div>
-      </div>
-    </div>
+      <button type="submit" disabled={loading}>
+        {loading ? "Cargando..." : "ENTRAR →"}
+      </button>
+
+    </form>
+
   </div>
 
-  <div className="login-left-footer">
-    © 2026 Inventory System Inc. Todos los derechos reservados.
-    <div className="footer-links">
-      <span>Privacidad</span>
-      <span>Términos</span>
-    </div>
-  </div>
 </div>
 
-      {/* Lado derecho */}
-      <div className="login-right">
-        <h5>BIENVENIDO DE VUELTA</h5>
-        <h2>Inicio de Sesión</h2>
-        <p>Ingresa tus credenciales para acceder al sistema.</p>
-
-        {error && <p className="text-red-500 mb-2">{error}</p>}
-
-        <form onSubmit={handleSubmit}>
-
-          <div className="input-group">
-            <FaUser className="icon-input" />
-            <input
-              name="username"
-              placeholder="Usuario"
-              value={form.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="input-group">
-            <FaLock className="icon-input" />
-            <input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Contraseña"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-            <FaEyeSlash
-              className="eye-icon"
-              onClick={() => setShowPassword(!showPassword)}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-
-          <button type="submit" disabled={loading}>
-            {loading ? "Cargando..." : "ENTRAR →"}
-          </button>
-
-        </form>
-      </div>
     </div>
   );
 }

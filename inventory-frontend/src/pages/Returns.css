@@ -1,0 +1,223 @@
+.returns-container{
+width:100%;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.returns-card{
+background:#fff;
+border-radius:8px;
+padding:15px;
+margin-bottom:20px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.custom-select{
+position:relative;
+width:100%;
+}
+
+.select-box{
+border:1px solid #ccc;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+background:white;
+}
+
+.dropdown{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:white;
+border:1px solid #ddd;
+border-radius:6px;
+max-height:250px;
+overflow-y:auto;
+z-index:10;
+}
+
+.dropdown input{
+width:100%;
+padding:8px;
+border:none;
+border-bottom:1px solid #eee;
+outline:none;
+}
+
+.dropdown-item{
+padding:10px;
+cursor:pointer;
+border-bottom:1px solid #f1f1f1;
+}
+
+.dropdown-item:hover{
+background:#f5f5f5;
+}
+
+.dropdown-item p{
+margin:2px 0;
+font-size:14px;
+}
+
+.dropdown-item small{
+color:#666;
+}
+
+.return-btn{
+width:100%;
+padding:12px;
+border:none;
+background:#2ecc71;
+color:white;
+font-weight:bold;
+border-radius:6px;
+cursor:pointer;
+}
+
+.return-btn:hover{
+background:#27ae60;
+}
+
+.difference-card{
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+/* CONTENEDOR */
+
+.returns-container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+/* TARJETAS */
+
+.returns-card{
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.returns-card h2{
+  margin-bottom:15px;
+  font-size:18px;
+}
+
+/* SELECT ESTILIZADO */
+
+.styled-select{
+  position:relative;
+}
+
+.styled-select select{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:14px;
+  background:#fafafa;
+  transition:0.2s;
+}
+
+.styled-select select:focus{
+  outline:none;
+  border:1px solid #2196f3;
+  background:white;
+}
+
+/* INFORMACIÓN DE VENTA */
+
+.sale-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.sale-grid span{
+  font-size:12px;
+  color:#777;
+}
+
+.sale-grid p{
+  font-size:16px;
+  font-weight:600;
+  margin-top:3px;
+}
+
+.sale-total{
+  color:#2e7d32;
+  font-size:18px;
+}
+
+/* DIFERENCIA */
+
+.difference-card{
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* BOTÓN */
+
+.return-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:#1976d2;
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.return-btn:hover{
+  background:#0d47a1;
+}
+
+
+.returns-history {
+  margin-top: 40px;
+}
+
+.returns-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.returns-filters input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.returns-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.returns-table th {
+  background: #111827;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.returns-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.returns-table tr:hover {
+  background: #f9fafb;
+}

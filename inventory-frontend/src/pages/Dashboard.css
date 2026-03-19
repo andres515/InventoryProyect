@@ -1,227 +1,132 @@
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+.dashboard-container {
+  padding: 40px;
+  background: #f4f6f9;
+  min-height: 100vh;
 }
 
-.product-card {
+.dashboard-container h1 {
+  margin-bottom: 30px;
+}
+
+/* ================= FILTRO ================= */
+
+.filter-card {
   background: white;
+  padding: 20px 25px;
   border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.2s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+}
+
+.filter-header h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.date-range {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.date-input {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-header h3 {
-  margin: 0;
-  font-size: 18px;
-}
-
-.description {
-  color: #64748b;
+.date-input label {
   font-size: 14px;
-  min-height: 40px;
+  margin-bottom: 5px;
+  color: #555;
 }
 
-.card-info p {
-  margin: 4px 0;
-  font-size: 14px;
-}
-
-.status {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.status.active {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.status.inactive {
-  background: #fee2e2;
-  color: #991b1b;
-}
-/* Imagen */
-.image-container {
-  width: 100%;
-  height: 160px;
-  background: #f1f5f9;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Botones */
-.card-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.btn {
-  flex: 1;
-  border: none;
-  padding: 10px;
+.date-input input {
+  padding: 10px 12px;
   border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+  border: 1px solid #ddd;
   transition: 0.2s;
 }
 
-.btn.add {
-  background: #22c55e;
-  color: white;
+.date-input input:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.1);
 }
 
-.btn.add:hover {
-  background: #16a34a;
-}
+/* ================= MÉTRICAS ================= */
 
-.btn.edit {
-  background: #3b82f6;
-  color: white;
-}
-
-.btn.edit:hover {
-  background: #2563eb;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+.metrics {
+  display: flex;
   gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.metric-card {
+  flex: 1;
+  min-width: 200px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+}
+
+.metric-card h3 {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.metric-card p {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ================= GRÁFICO ================= */
+
+.chart-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+/* ================= TABLA ================= */
+
+.sales-table-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
-.product-card {
-  background: white;
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-header h3 {
-  margin: 0;
-  font-size: 18px;
-}
-
-.description {
-  color: #64748b;
-  font-size: 14px;
-  min-height: 40px;
-}
-
-.card-info p {
-  margin: 4px 0;
+.sales-table th {
+  text-align: left;
+  padding: 12px;
+  background: #f0f2f5;
   font-size: 14px;
 }
 
-.status {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
+.sales-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
 }
 
-.status.active {
-  background: #dcfce7;
-  color: #166534;
+.sales-table tr:hover {
+  background: #fafafa;
 }
 
-.status.inactive {
-  background: #fee2e2;
-  color: #991b1b;
-}
-/* Imagen */
-.image-container {
-  width: 100%;
-  height: 160px;
-  background: #f1f5f9;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Botones */
-.card-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.btn {
-  flex: 1;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.2s;
-}
-
-.btn.add {
-  background: #22c55e;
-  color: white;
-}
-
-.btn.add:hover {
-  background: #16a34a;
-}
-
-.btn.edit {
-  background: #3b82f6;
-  color: white;
-}
-
-.btn.edit:hover {
-  background: #2563eb;
-}

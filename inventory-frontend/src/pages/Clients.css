@@ -1,0 +1,81 @@
+.clients-container{
+width:90%;
+margin:auto;
+margin-top:40px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.title{
+margin-bottom:25px;
+color:#2c3e50;
+}
+
+.client-form{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 1fr auto;
+gap:10px;
+margin-bottom:30px;
+}
+
+.client-form input{
+padding:10px;
+border-radius:6px;
+border:1px solid #ddd;
+font-size:14px;
+}
+
+.client-form button{
+background:#3498db;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.client-form button:hover{
+background:#2980b9;
+}
+
+.clients-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+border-radius:10px;
+overflow:hidden;
+}
+
+.clients-table thead{
+background:#2c3e50;
+color:white;
+}
+
+.clients-table th{
+padding:12px;
+text-align:left;
+}
+
+.clients-table td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+.clients-table tr:hover{
+background:#f5f7fa;
+}
+
+.delete-btn{
+background:#e74c3c;
+border:none;
+color:white;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.delete-btn:hover{
+background:#c0392b;
+}

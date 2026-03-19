@@ -1,0 +1,127 @@
+.settings-wrapper {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+/* Cards */
+.settings-card,
+.users-table-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  flex: 1;
+  min-width: 350px;
+}
+
+.settings-card h2,
+.users-table-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.settings-form input,
+.settings-form select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+.settings-form input:focus,
+.settings-form select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Buttons */
+.primary-btn {
+  background: #4a90e2;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #357bd8;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Table */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th {
+  text-align: left;
+  padding: 10px;
+  background: #f0f2f5;
+  font-size: 14px;
+}
+
+.users-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.users-table tr:hover {
+  background: #fafafa;
+}
+
+/* Role badges */
+.role-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.role-badge.admin {
+  background: #ffeaa7;
+  color: #b7791f;
+}
+
+.role-badge.user {
+  background: #dff9fb;
+  color: #0984e3;
+}

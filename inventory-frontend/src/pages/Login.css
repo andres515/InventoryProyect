@@ -8,7 +8,7 @@
 
 .login-left {
   flex: 1;
-  background: #1e293b;
+   background: linear-gradient(135deg, #bf14cc, #463ef5, #ab00c8);
   color: white;
   padding: 3rem;
   display: flex;
@@ -38,71 +38,134 @@ footer .links {
   margin-top: 0.5rem;
 }
 
+/* ========================= */
+/* RIGHT SIDE */
+/* ========================= */
+
 .login-right {
   flex: 1;
-  background: white;
-  padding: 3rem;
+  background: #f1f5f9;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
-.login-right h5 {
-  color: #6366f1;
-  font-weight: bold;
+/* CARD */
+
+.login-card {
+  background: white;
+  padding: 50px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.08),
+    0 8px 16px rgba(0,0,0,0.05);
+}
+
+/* HEADER */
+
+.login-header {
+  margin-bottom: 2rem;
+}
+
+.login-header h5 {
+  color: #4d50b0;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
   margin-bottom: 0.5rem;
 }
 
-.login-right h2 {
+.login-header h2 {
+  font-size: 1.9rem;
   margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
+
+.login-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* ERROR */
+
+.error-text {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+/* ========================= */
+/* INPUTS */
+/* ========================= */
 
 .input-group {
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 1.3rem;
 }
 
 .input-group .icon-input {
   position: absolute;
   top: 50%;
-  left: 0.75rem;
+  left: 1rem;
   transform: translateY(-50%);
-  color: #9ca3af;
+  color: #94a3b8;
+  font-size: 0.9rem;
 }
 
 .input-group input {
   width: 100%;
-  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  padding: 0.9rem 1rem 0.9rem 2.7rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
 }
 
 .input-group .eye-icon {
   position: absolute;
   top: 50%;
-  right: 0.75rem;
+  right: 1rem;
   transform: translateY(-50%);
-  color: #9ca3af;
+  color: #94a3b8;
   cursor: pointer;
+  font-size: 0.9rem;
 }
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
 
 button {
   width: 100%;
-  padding: 0.75rem;
-  background: #6366f1;
-  color: white;
-  font-weight: bold;
+  padding: 0.9rem;
+  border-radius: 10px;
   border: none;
-  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  margin-top: 1rem;
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  color: white;
+  transition: all 0.25s ease;
 }
 
 button:hover {
-  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79,70,229,0.35);
 }
 
+button:active {
+  transform: translateY(0);
+}
 .links-bottom {
   display: flex;
   justify-content: space-between;
@@ -116,4 +179,79 @@ button:hover {
   font-size: 0.75rem;
   margin-top: 2rem;
   color: #9ca3af;
+}
+/* ========================= */
+/* CARRUSEL */
+/* ========================= */
+
+.carousel-left {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: 520px;
+}
+
+.slide {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.slide.active {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.slide p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* ========================= */
+/* DOTS */
+/* ========================= */
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  width: 24px;
+  border-radius: 20px;
+  background: white;
+}
+.login-right form {
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

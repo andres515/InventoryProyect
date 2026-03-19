@@ -1,40 +1,158 @@
-/* Layout.css */
+/* ===== LAYOUT GENERAL ===== */
 .app-container {
   display: flex;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
+  height: 100vh;
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* ===== SIDEBAR ===== */
 .sidebar {
-  width: 220px;
-  background-color: #1e1e2f;
+  width: 240px;
+  background: linear-gradient(135deg, #bf14cc, #463ef5, #ab00c8);
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 18px;
 }
 
-.logo {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 40px;
+/* ===== LOGO / EMPRESA ===== */
+.logo-box {
+ 
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  margin-bottom: 25px;
+
+}
+
+.logo-img {
+  width: 140px;
+  height: 98px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.logo-text {
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 200;
+  font-family: "Sofia", sans-serif;
+}
+
+/* ===== MENU ===== */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .menu-item {
-  display: block;
-  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
   text-decoration: none;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  border-radius: 4px;
+  color: #cbd5e1;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  font-size: 14px;
 }
 
 .menu-item:hover {
-  background-color: #3a3a5c;
+  background: rgba(255,255,255,0.08);
 }
 
+.menu-item.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.menu-icon {
+  font-size: 30px;
+}
+
+/* ===== MAIN CONTENT ===== */
 .main-content {
   flex: 1;
-  padding: 20px;
-  background-color: #f5f5f7;
+  background-color: #f1f5f9;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* ===== FOOTER SIDEBAR ===== */
+.sidebar-footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 15px;
+}
+
+/* USER + CARRITO */
+.user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  background: #6366f1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.username {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* ===== CARRITO ===== */
+.cart-icon {
+  position: relative;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ===== BOTON LOGOUT ===== */
+.logout-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.25s;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
 }

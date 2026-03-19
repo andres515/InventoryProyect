@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { createProduct } from "../services/productService";
+import "./CreateProduct.css";
 
 function CreateProduct() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function CreateProduct() {
     description: "",
     price: "",
     stock: "",
+    basePrice: "",
     category: "",
     active: true,
     image: null
@@ -19,9 +21,46 @@ function CreateProduct() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // =========================
-  // Inputs normales
-  // =========================
+   // 👇 AQUÍ VA
+  const categories = [
+    "Pañales",
+    "Toallitas Húmedas",
+    "Leche y Fórmulas",
+    "Biberones",
+    "Chupos y Mordedores",
+    "Higiene del Bebé",
+    "Cremas y Pomadas",
+    "Ropa de Bebé",
+    "Accesorios",
+    "Juguetes",
+    "Cochecitos y Sillas",
+    "Maternidad",
+    "Ofertas"
+  ];
+
+  /* =========================
+     FORMATO PRECIO COLOMBIA
+  ========================== */
+
+  const formatPrice = (value) => {
+    if (!value) return "";
+    return Number(value).toLocaleString("es-CO");
+  };
+
+  const handlePriceChange = (value) => {
+    const numericValue = value.replace(/\D/g, "");
+    setForm({ ...form, price: numericValue });
+  };
+
+  const handleBasePriceChange = (value) => {
+  const numericValue = value.replace(/\D/g, "");
+  setForm({ ...form, basePrice: numericValue });
+};
+
+  /* =========================
+     Inputs normales
+  ========================== */
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -31,9 +70,10 @@ function CreateProduct() {
     });
   };
 
-  // =========================
-  // Seleccionar imagen
-  // =========================
+  /* =========================
+     Imagen
+  ========================== */
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
 
@@ -47,16 +87,16 @@ function CreateProduct() {
     }
   };
 
-  // limpiar memoria preview
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
-  // =========================
-  // Enviar formulario
-  // =========================
+  /* =========================
+     Enviar formulario
+  ========================== */
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,6 +107,7 @@ function CreateProduct() {
 
       formData.append("name", form.name);
       formData.append("description", form.description);
+      formData.append("basePrice", parseFloat(form.basePrice));
       formData.append("price", parseFloat(form.price));
       formData.append("stock", parseInt(form.stock));
       formData.append("category", form.category);
@@ -88,79 +129,118 @@ function CreateProduct() {
   };
 
   return (
-    <div className="create-product">
-      <h2>Crear Producto</h2>
+    <div className="create-container">
+      <div className="create-card">
+        <h2>Crear Producto</h2>
 
-      {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-        <input name="name" placeholder="Nombre" onChange={handleChange} />
-
-        <textarea
-          name="description"
-          placeholder="Descripción"
-          onChange={handleChange}
-        />
-
-        <input
-          type="number"
-          name="price"
-          placeholder="Precio"
-          onChange={handleChange}
-        />
-
-        <input
-          type="number"
-          name="stock"
-          placeholder="Stock"
-          onChange={handleChange}
-        />
-
-        <input
-          name="category"
-          placeholder="Categoría"
-          onChange={handleChange}
-        />
-
-        <label>
-          Activo
-          <input
-            type="checkbox"
-            name="active"
-            checked={form.active}
-            onChange={handleChange}
-          />
-        </label>
-
-        {/* IMAGEN */}
-        <div>
-          <label>Imagen del producto</label>
-
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-
-          {preview && (
-            <img
-              src={preview}
-              alt="preview"
-              style={{
-                width: "150px",
-                marginTop: "10px",
-                borderRadius: "10px"
-              }}
+          <div className="form-group">
+            <label>Nombre</label>
+            <input
+              name="name"
+              placeholder="Producto"
+              onChange={handleChange}
             />
-          )}
-        </div>
+          </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Guardando..." : "Guardar Producto"}
-        </button>
+          <div className="form-group">
+            <label>Descripción</label>
+            <textarea
+              name="description"
+              placeholder="Describe el producto..."
+              onChange={handleChange}
+            />
+          </div>
 
-      </form>
+           <div className="form-group">
+            <label>Precio Base (COP)</label>
+            <input
+              type="text"
+              value={formatPrice(form.basePrice)}
+              onChange={(e) => handleBasePriceChange(e.target.value)}
+              placeholder="800.000"
+            />
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label>Precio (COP)</label>
+              <input
+                type="text"
+                value={formatPrice(form.price)}
+                onChange={(e) => handlePriceChange(e.target.value)}
+                placeholder="1.000.000"
+              />
+            </div>
+           
+
+            <div className="form-group">
+              <label>Stock</label>
+              <input
+                type="number"
+                name="stock"
+                placeholder="10"
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+         <div className="form-group">
+            <label>Categoría</label>
+            <select
+              name="category"
+              value={form.category}
+              onChange={handleChange}
+            >
+              <option value="">Seleccionar categoría</option>
+
+              {categories.map((cat, index) => (
+                <option key={index} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="form-group checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="active"
+                checked={form.active}
+                onChange={handleChange}
+              />
+              Producto Activo
+            </label>
+          </div>
+
+          <div className="form-group">
+            <label>Imagen del producto</label>
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+
+            {preview && (
+              <img
+                src={preview}
+                alt="preview"
+                className="image-preview"
+              />
+            )}
+          </div>
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Guardando..." : "Guardar Producto"}
+          </button>
+
+        </form>
+      </div>
     </div>
   );
 }

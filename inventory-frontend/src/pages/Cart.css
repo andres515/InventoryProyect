@@ -1,0 +1,421 @@
+/* ================= CONTENEDOR ================= */
+
+.cart-container {
+  padding: 40px;
+}
+
+.cart-title {
+  margin-bottom: 5px;
+  font-size: 26px;
+}
+
+.cart-count {
+  color: gray;
+  margin-bottom: 30px;
+}
+
+/* ================= LAYOUT ================= */
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+/* ================= ITEMS ================= */
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cart-image {
+  width: 90px;
+  border-radius: 10px;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.price {
+  font-weight: bold;
+  color: #333;
+}
+
+/* ================= BOTON ELIMINAR ================= */
+
+.remove-btn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.remove-btn:hover {
+  background: #e53935;
+}
+
+/* ================= RESUMEN ================= */
+
+.cart-summary {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+.summary-title {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.summary-row.total {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 10px 0;
+}
+
+.free {
+  color: green;
+  font-weight: 600;
+}
+
+/* ================= CLIENT SELECTOR ================= */
+
+.client-selector {
+  margin-bottom: 20px;
+}
+
+.client-selector label {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* dropdown container */
+
+.client-dropdown {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  margin-top: 5px;
+}
+
+/* input */
+
+.client-search {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* lista */
+
+.client-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* opcion */
+
+.client-option {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.client-option:hover {
+  background: #f5f5f5;
+}
+
+/* ================= BOTONES ================= */
+
+.checkout-btn {
+  width: 100%;
+  background: #5b3df5;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.checkout-btn:hover {
+  background: #4c2ee0;
+}
+
+.clear-btn {
+  width: 100%;
+  background: #f1f1f1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.clear-btn:hover {
+  background: #e5e5e5;
+}
+
+/* ================= MODAL OVERLAY ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ================= MODAL ================= */
+
+.modal-box {
+  background: white;
+  width: 400px;
+  max-width: 90%;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  animation: slideUp 0.25s ease;
+}
+
+.modal-box.success {
+  text-align: center;
+}
+
+/* ================= TITULO ================= */
+
+.modal-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ================= INPUTS ================= */
+
+.modal-box input,
+.modal-box select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.modal-box input:focus,
+.modal-box select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+/* ================= EFECTIVO ================= */
+
+.cash-section {
+  margin-top: 15px;
+}
+
+.change-text {
+  margin-top: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ================= BOTONES MODAL ================= */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #43a047;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #d5d5d5;
+}
+
+/* ================= CARRITO VACIO ================= */
+
+.empty-cart {
+  padding: 40px;
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  color: #777;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ================= ANIMACIONES ================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* ================= BOTON ELIMINAR ================= */
+
+.cart-container .remove-btn {
+  background: #ef4444;
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-container .remove-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* ================= BOTON PROCESAR PAGO ================= */
+
+.cart-container .checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1475b1;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+
+.cart-container .checkout-btn:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* ================= BOTON VACIAR CARRITO ================= */
+
+.cart-container .clear-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #64748b;
+  border: none;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cart-container .clear-btn:hover {
+  background: #475569;
+}
+
+/* ================= BOTONES MODAL ================= */
+
+.cart-container .modal-box .btn-primary {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cart-container .modal-box .btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.cart-container .modal-box .btn-secondary {
+  background: #e5e7eb;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cart-container .modal-box .btn-secondary:hover {
+  background: #d4d4d8;
+}
+
+.client-search.error {
+  border: 2px solid #ef4444;
+}
